@@ -1,23 +1,33 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
-import Home from './pages/Home';
-import ProfilePage from './pages/Profile';
+import HomePage from './pages/Home';
 import { useAuth } from './services/auth';
 
-function App() {
-  const { isLoggedIn } = useAuth();
+// function App() {
+//     //const { isLoggedIn } = useAuth();
+//
+//     return (
+//         <Router>
+//             <Routes>
+//                 <Route path="/" element={isLoggedIn ? <Navigate to="/profile" /> : <HomePage />} />
+//                 <Route
+//                     path="/profile"
+//                     element={isLoggedIn ? <HomePage /> : <Navigate to="/" />}
+//                 />
+//             </Routes>
+//         </Router>
+//     );
+// }
 
-  return (
-      <Router>
-        <Routes>
-          <Route path="/" element={isLoggedIn ? <Navigate to="/profile" /> : <Home />} />
-          <Route
-              path="/profile"
-              element={isLoggedIn ? <ProfilePage /> : <Navigate to="/" />}
-          />
-        </Routes>
-      </Router>
-  );
+function App() {
+    return (
+        <Router>
+            <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/profile" element={<HomePage />} />
+            </Routes>
+        </Router>
+    );
 }
 
 export default App;
